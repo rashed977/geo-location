@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Coordinates } from 'src/app/interfaces/coordinates';
 import { LocationService } from '../services/location.service';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-main',
@@ -8,7 +9,7 @@ import { LocationService } from '../services/location.service';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-  constructor(private locationService: LocationService) {}
+  constructor(private locationService: LocationService, private toast: HotToastService) {}
   cityName: string = '';
   city: Coordinates[] = [];
   markers: any[] = [];
@@ -18,7 +19,13 @@ export class MainComponent {
   onSubmit(){
     if(this.cityName!=''){
       this.loader = true;
-      this.locationService.getCoordinates(this.cityName).subscribe(data => {
+      this.locationService.getCoordinates(this.cityName).pipe(
+        this.toast.observe({
+          // loading:'Getting Location...',
+          // success:'Location Added successfully',
+          error:(error)=>'This error Happened: '+ error
+        })
+      ).subscribe(data => {
         this.city = data;
       navigator.geolocation.getCurrentPosition(() => {
         this.center = {
