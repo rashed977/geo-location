@@ -1,0 +1,154 @@
+.bodybg-color {
+  background-color: rgb(2, 0, 34);
+}
+header{
+  background-color: rgb(2, 0, 34);
+  padding: 20px;
+  height: 6vh;
+  margin-bottom: -10px;
+  nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo {
+      display: flex;
+      align-items: center;
+      svg {
+        fill: white;
+        width: 40px;
+        margin-right: 10px;
+      }
+      h2 {
+        margin-top: 12px;
+        color: white;
+        font-size: 25px;
+      }
+    }
+    button{
+      svg{
+        padding-top: 5px;
+        fill: rgb(2, 0, 34);
+        width: 10px;
+      }
+    }
+  }
+}
+@keyframes rotate {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: 530px 0;
+	}
+}
+.main-div {
+	display: flex;
+  flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: rgb(2, 0, 34);
+  height: 130vh;
+  .earth {
+    margin-top: 40px;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: transparent url("https://i.imgur.com/Qk4UXcU.png");
+    background-size: cover;
+    box-shadow: inset 0px -20px 50px 10px #00ffff80, 0px 0px 30px 6px #00ffff70;
+    transform-style: preserve-3d;
+    transform: rotate(20deg);
+    animation: rotate 15s linear infinite;
+  }
+  .content {
+    color: white;
+    div {
+      margin-top: 5vh;
+    }
+    .works, .about{
+      background-image: url("../../assets/images/world.jpg");
+      width:80vw;
+      padding: 5vh;
+      border: 1px solid rgb(2, 0, 34);
+      border-radius: 10px;
+    }
+  }
+  .end {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5vh;
+    color: white;
+    h2 {
+      text-align: center;
+    }
+  }
+}
+footer{
+  margin-top: -10px;
+  padding-top: 5vh;
+  background-color: rgb(2, 0, 34);
+  p{
+    color: white;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 375px){
+  .main-div{
+    height: 180vh;
+  }
+  header{
+    nav{
+      .logo {
+        h2 {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 280px){
+  .main-div{
+    height: 200vh;
+    .earth{
+      width: 250px;
+      height: 250px;
+    }
+  }
+  header{
+    background-color: rgb(2, 0, 34);
+    padding: 20px;
+    height: 6vh;
+    margin-bottom: -10px;
+    nav{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .logo {
+        display: flex;
+        align-items: center;
+        svg {
+          fill: white;
+          width: 20px;
+          margin-right: 10px;
+        }
+        h2 {
+          margin-top: 12px;
+          color: white;
+          font-size: 12px;
+        }
+      }
+      button{
+        width: 120px;
+        span {
+          font-size: 10px;
+        }
+        svg{
+          padding-top: 5px;
+          fill: rgb(2, 0, 34);
+          width: 7px;
+        }
+      }
+    }
+  }
+}

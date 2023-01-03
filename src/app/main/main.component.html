@@ -1,0 +1,39 @@
+<div class="main-container">
+  <div class="input-field">
+    <div class="input-container">
+      <label for="">Geo Location</label>
+      <input
+      type="text"
+      [(ngModel)]="cityName"
+      placeholder="Type your city here"
+      />
+      <button type="submit" (click)="onSubmit()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+          d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
+          />
+        </svg>
+      </button>
+      <p *ngIf="hint && cityName == ''">You must enter city name!</p>
+    </div>
+  </div>
+  <mat-progress-bar mode="indeterminate" *ngIf="loader" ></mat-progress-bar>
+
+  <google-map
+  height="500px"
+    width="100%"
+    [zoom]="zoom"
+    [center]="center"
+    [options]="options"
+  >
+    <map-marker
+      *ngFor="let marker of markers"
+      [position]="marker.position"
+      [label]="marker.label"
+      [title]="marker.title"
+      [options]="marker.options"
+    >
+    </map-marker>
+  </google-map>
+</div>
